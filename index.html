@@ -44,7 +44,7 @@
 </head>
   <body class="bg-farm-green-light">
     <div id="root"></div>
-    <!-- Configure Babel to transpile TSX with presets and use an absolute path for deployment -->
-    <script type="text/babel" data-type="module" data-presets="typescript,react" src="/index.tsx"></script>
+    <!-- Change script type to text/babel and use a relative path for deployment compatibility -->
+    <script type="text/babel" data-type="module" src="index.tsx"></script>
   </body>
 </html>

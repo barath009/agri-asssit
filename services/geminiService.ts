@@ -1,11 +1,18 @@
 
-
 import { GoogleGenAI, Chat, Type } from '@google/genai';
 import type { Profile, SoilData, CropRecommendation, Language, DashboardAdvice, MarketPrice, WeeklyTasks, AITask } from '../types';
 import { translations } from '../translations';
 
-// The API key is expected to be available in the environment variables.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// WARNING: Storing API keys directly in client-side code is not recommended for production applications.
+// This key is visible to anyone inspecting the app's source code.
+// For development purposes, we are setting it here directly.
+const API_KEY = "AIzaSyBRjyGEBd4aB66CKoTAFF1uTUA12VYVByQ";
+
+if (!API_KEY) {
+    throw new Error("API_KEY is not set. Please add your API key in services/geminiService.ts");
+}
+
+const ai = new GoogleGenAI({ apiKey: API_KEY });
 
 const model = 'gemini-2.5-flash';
 
@@ -463,7 +470,7 @@ export const getSoilRecommendations = async (soilData: SoilData, lang: Language)
                         yield: { type: Type.STRING },
                         duration: { type: Type.STRING },
                         reasons: { type: Type.ARRAY, items: { type: Type.STRING } },
-                        plantingTips: { type: Type.ARRAY, items: { type: Type.STRING } },
+                        plantingTips: { type: Type.ARRAY, items: { type: 'STRING' } },
                     },
                     required: ['cropName', 'suitability', 'yield', 'duration', 'reasons', 'plantingTips'],
                 },
