@@ -3,10 +3,7 @@ import { GoogleGenAI, Chat, Type } from '@google/genai';
 import type { Profile, SoilData, CropRecommendation, Language, DashboardAdvice, MarketPrice, WeeklyTasks, AITask } from '../types';
 import { translations } from '../translations';
 
-if (!process.env.API_KEY) {
-    throw new Error("API_KEY environment variable not set");
-}
-
+// The API key is expected to be available in the environment variables.
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const model = 'gemini-2.5-flash';
