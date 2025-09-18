@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Krishi Sakhi: AI Farming Assistant",
+  "description": "An AI-powered personal farming assistant providing personalized advice, activity tracking, and alerts. Features a multilingual conversational interface with voice support in English, Malayalam, and Tamil.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
