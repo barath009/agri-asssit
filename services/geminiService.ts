@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, Chat, Type } from '@google/genai';
 import type { Profile, SoilData, CropRecommendation, Language, DashboardAdvice, MarketPrice, WeeklyTasks, AITask } from '../types';
 import { translations } from '../translations';
@@ -161,7 +162,7 @@ export const getDailyTasks = async (profile: Profile, lang: Language): Promise<A
             },
         });
         
-        const jsonString = response.text;
+        const jsonString = response.text.trim();
         const result = JSON.parse(jsonString);
         return result.tasks || [];
 
@@ -237,7 +238,7 @@ export const getWeeklyTasks = async (profile: Profile, lang: Language): Promise<
             },
         });
 
-        const jsonString = response.text;
+        const jsonString = response.text.trim();
         return JSON.parse(jsonString);
 
     } catch (error) {
@@ -300,7 +301,7 @@ export const getDashboardAdvice = async (profile: Profile, lang: Language): Prom
             },
         });
         
-        const jsonString = response.text;
+        const jsonString = response.text.trim();
         const result = JSON.parse(jsonString);
         return result;
 
@@ -364,7 +365,7 @@ export const getMarketPrice = async (profile: Profile, lang: Language): Promise<
             },
         });
         
-        const jsonString = response.text;
+        const jsonString = response.text.trim();
         const result = JSON.parse(jsonString);
         // Ensure trend is one of the allowed values, default to 'stable' if not.
         if (!['up', 'down', 'stable'].includes(result.trend)) {
@@ -483,7 +484,7 @@ export const getSoilRecommendations = async (soilData: SoilData, lang: Language)
             },
         });
         
-        const jsonString = response.text;
+        const jsonString = response.text.trim();
         const result = JSON.parse(jsonString);
         
         // Normalize suitability ratings to English for consistent styling

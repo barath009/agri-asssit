@@ -1,5 +1,6 @@
 
 
+
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import type { Chat, Part } from '@google/genai';
 import { ChatWindow } from './components/ChatWindow';
@@ -285,8 +286,10 @@ const App: React.FC = () => {
         const imagePart = await fileToGenerativePart(image);
         const prompt = text.trim() || imagePrompt;
         const textPart = { text: prompt };
+        // FIX: The sendMessageStream method expects an object with a 'message' property.
         stream = await chatRef.current.sendMessageStream({ message: [textPart, imagePart] });
       } else {
+        // FIX: The sendMessageStream method expects an object with a 'message' property.
         stream = await chatRef.current.sendMessageStream({ message: text });
       }
 
