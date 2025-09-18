@@ -1,4 +1,5 @@
 
+
 import { GoogleGenAI, Chat, Type } from '@google/genai';
 import type { Profile, SoilData, CropRecommendation, Language, DashboardAdvice, MarketPrice, WeeklyTasks, AITask } from '../types';
 import { translations } from '../translations';
@@ -462,7 +463,7 @@ export const getSoilRecommendations = async (soilData: SoilData, lang: Language)
                         yield: { type: Type.STRING },
                         duration: { type: Type.STRING },
                         reasons: { type: Type.ARRAY, items: { type: Type.STRING } },
-                        plantingTips: { type: Type.ARRAY, items: { type: 'STRING' } },
+                        plantingTips: { type: Type.ARRAY, items: { type: Type.STRING } },
                     },
                     required: ['cropName', 'suitability', 'yield', 'duration', 'reasons', 'plantingTips'],
                 },
